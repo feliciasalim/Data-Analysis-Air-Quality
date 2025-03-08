@@ -2,8 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 import streamlit as st
-from babel.numbers import format_currency
-sns.set(style='white')
+sns.set(style='dark')
 
 def load_data():
     file_id = "1smdCfBAvwriSSAHFGyCi-4qQHKJzYvas"
