@@ -6,7 +6,9 @@ from babel.numbers import format_currency
 sns.set(style='white')
 
 def load_data():
-    df = pd.read_csv("Downloads/all_data.csv") 
+    file_id = "1smdCfBAvwriSSAHFGyCi-4qQHKJzYvas"
+    link = f"https://drive.google.com/uc?id={file_id}"
+    df = pd.read_csv(link) 
     df["datetime"] = pd.to_datetime(df[["year", "month", "day", "hour"]], errors='coerce')  
     return df
 
