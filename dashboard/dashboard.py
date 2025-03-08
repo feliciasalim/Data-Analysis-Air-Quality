@@ -5,7 +5,7 @@ import streamlit as st
 sns.set(style='dark')
 
 def load_data():
-    df = pd.read_csv("all_data.csv") 
+    df = pd.read_csv("dashboard/all_data.csv") 
     df["datetime"] = pd.to_datetime(df[["year", "month", "day", "hour"]], errors='coerce')  
     return df
 
