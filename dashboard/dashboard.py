@@ -5,9 +5,7 @@ import streamlit as st
 sns.set(style='dark')
 
 def load_data():
-    file_id = "1smdCfBAvwriSSAHFGyCi-4qQHKJzYvas"
-    link = f"https://drive.google.com/uc?id={file_id}"
-    df = pd.read_csv(link) 
+    df = pd.read_csv("all_data.csv") 
     df["datetime"] = pd.to_datetime(df[["year", "month", "day", "hour"]], errors='coerce')  
     return df
 
