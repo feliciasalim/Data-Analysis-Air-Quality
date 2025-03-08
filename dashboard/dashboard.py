@@ -12,7 +12,7 @@ def load_data():
 df = load_data()
 
 with st.sidebar:
-    st.image("https://drive.google.com/file/d/1K2w6ESCR5pO8CaHPp1uJa6zDX1KoJ02S/view")
+    st.image("dashboard/pic.jpg")
     st.title("Dashboard Felicia Salim")
     st.subheader("Pilih Stasiun:")
     station = st.selectbox("Stasiun", df["station"].unique())
