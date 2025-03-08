@@ -122,13 +122,11 @@ fsspec==2024.10.0
 future==1.0.0
 gast==0.6.0
 gcsfs==2024.10.0
-GDAL==3.6.4
 gdown==5.2.0
 geemap==0.35.2
 gensim==4.3.3
 geocoder==1.38.1
 geographiclib==2.0
-geopandas==1.0.1
 geopy==2.4.1
 gin-config==0.5.0
 gitdb==4.0.12
