@@ -89,16 +89,16 @@ cuaca = st.selectbox(
     label="Pilih", 
     options=["TEMP", "PRES", "DEWP", "RAIN", "WSPM"])
 
-def plot_cuaca(df, parameter):
-    cuaca_mean = df.groupby("year")[parameter].mean().reset_index()
-    
-    plt.figure(figsize=(12, 6))
-    plt.plot(cuaca_mean["year"], cuaca_mean[parameter], marker='o')
-    plt.xlabel("Tahun")
-    plt.ylabel(f"{parameter} Nilai")
-    plt.title(f"{parameter} Tren Cuaca per Tahun")
-    st.pyplot(plt)
 
-plot_cuaca(filter, cuaca)
+cuaca_mean = filter.groupby("year")[cuaca].mean().reset_index()
+    
+plt.figure(figsize=(12, 6))
+plt.plot(cuaca_mean["year"], cuaca_mean[parameter], marker='o')
+plt.xlabel("Tahun")
+plt.ylabel(f"{parameter} Nilai")
+plt.title(f"{parameter} Tren Cuaca per Tahun")
+st.pyplot(plt)
+
+
 
 
