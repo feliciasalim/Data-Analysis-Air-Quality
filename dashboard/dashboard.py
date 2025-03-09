@@ -42,37 +42,38 @@ else:
     xlabel = "Jam"
     xdata = mean["hour"]
 
-fig, ax = plt.subplots(nrows=1, ncols=3, figsize=(15, 20))
+fig, ax = plt.subplots(nrows=2, ncols=3, figsize=(15, 20))
+ax = ax.flatten() 
 polutan = ["PM2.5", "PM10", "SO2", "NO2", "CO", "O3"]
 colors = ['red', 'blue', 'green', 'purple', 'orange', 'black']
 
 
-ax[0].plot(data=xdata, mean["PM2.5"], marker='o', linewidth=2)
+ax[0].plot(data=xdata, mean["PM2.5"], marker='o', linewidth=2, colors=[0])
 ax[0].set_xlabel(None)
 ax[0].set_ylabel("PM2.5")
 ax[0].set_title("Polusi PM2.5")
 
-ax[1].plot(data=xdata, mean["PM10"], marker='o', linewidth=2)
+ax[1].plot(data=xdata, mean["PM10"], marker='o', linewidth=2, colors=[1])
 ax[1].set_xlabel(None)
 ax[1].set_ylabel("PM10")
 ax[1].set_title("Polusi PM10")
 
-ax[2].plot(data=xdata, mean["SO2"], marker='o', linewidth=2)
+ax[2].plot(data=xdata, mean["SO2"], marker='o', linewidth=2, colors=[2])
 ax[2].set_xlabel(None)
 ax[2].set_ylabel("SO2")
 ax[2].set_title("Polusi SO2")
 
-ax[3].plot(data=xdata, mean["NO2"], marker='o', linewidth=2)
+ax[3].plot(data=xdata, mean["NO2"], marker='o', linewidth=2, colors=[3])
 ax[3].set_xlabel(None)
 ax[3].set_ylabel(SO2)
 ax[3].set_title("Polusi SO2")
 
-ax[4].plot(data=xdata, mean["CO"], marker='o', linewidth=2)
+ax[4].plot(data=xdata, mean["CO"], marker='o', linewidth=2, colors=[4])
 ax[4].set_xlabel(None)
 ax[4].set_ylabel("CO")
 ax[4].set_title("Polusi CO")
 
-ax[5].plot(data=xdata, mean["O3"], marker='o', linewidth=2)
+ax[5].plot(data=xdata, mean["O3"], marker='o', linewidth=2, colors=[5])
 ax[5].set_xlabel("Hari", fontsize=20)
 ax[5].set_ylabel("O3")
 ax[5].set_title("Polusi O3")
