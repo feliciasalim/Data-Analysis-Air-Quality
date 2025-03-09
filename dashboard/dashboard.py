@@ -4,56 +4,79 @@ import seaborn as sns
 import streamlit as st
 sns.set(style='dark')
 
-def load_data():
-    df = pd.read_csv("dashboard/all_data.csv") 
-    df["datetime"] = pd.to_datetime(df[["year", "month", "day", "hour"]], errors='coerce')  
-    return df
-
-df = load_data()
+df = pd.read_csv("dashboard/all_data.csv")  
 
 with st.sidebar:
     st.image("dashboard/pic.jpg")
     st.title("Dashboard Felicia Salim")
     st.subheader("Pilih Stasiun:")
-    station = st.selectbox("Stasiun", df["station"].unique())
+    station = st.selectbox(
+        label = "Stasiun", 
+        options = df["station"].unique())
 
 filter = df[df["station"] == station]
 
 st.title("Analisis Dataset 'Air Quality' :sparkles:")
-st.write("<hr style='border: 0.2px solid white; margin: 2px 0;'>", unsafe_allow_html=True)
 
 
 st.subheader("Tren Polusi")
 
-pilihan = st.selectbox("Pilih", ["Tahun", "Bulan", "Hari", "Jam"])
+pilihan = st.selectbox(
+    label = "Pilih kategori by:", 
+    options = ["Tahun", "Bulan", "Hari", "Jam"])
 
 if pilihan == "Tahun":
     mean = filter.groupby("year")[["PM2.5", "PM10", "SO2", "NO2", "CO", "O3"]].mean().reset_index()
-    x_label = "Tahun"
-    x_data = mean["year"]
+    xlabel = "Tahun"
+    xdata = mean["year"]
 elif pilihan == "Bulan":
     mean = filter.groupby("month")[["PM2.5", "PM10", "SO2", "NO2", "CO", "O3"]].mean().reset_index()
-    x_label = "Bulan"
-    x_data = mean["month"]
+    xlabel = "Bulan"
+    xdata = mean["month"]
 elif pilihan == "Hari":
     mean = filter.groupby("day")[["PM2.5", "PM10", "SO2", "NO2", "CO", "O3"]].mean().reset_index()
-    x_label = "Hari"
-    x_data = mean["day"]
+    xlabel = "Hari"
+    xdata = mean["day"]
 else:
     mean = filter.groupby("hour")[["PM2.5", "PM10", "SO2", "NO2", "CO", "O3"]].mean().reset_index()
-    x_label = "Jam"
-    x_data = mean["hour"]
+    xlabel = "Jam"
+    xdata = mean["hour"]
 
-fig, axes = plt.subplots(3, 2, figsize=(15, 20))
-fig.suptitle(f"Rata-rata Polutan berdasarkan {x_label}", fontsize=24)
+fig, ax = plt.subplots(nrows=1, ncols=3, figsize=(15, 20))
 polutan = ["PM2.5", "PM10", "SO2", "NO2", "CO", "O3"]
-colors = ['r', 'g', 'g', 'r', 'r', 'g']
+colors = ['red', 'blue', 'green', 'purple', 'orange', 'black']
 
-for ax, polutan, color in zip(axes.flatten(), polutan, colors):
-    ax.plot(x_data, mean[polutan], marker='o', linestyle='-', color=color)
-    ax.set_xlabel(x_label)
-    ax.set_ylabel(f"{polutan}")
-    ax.set_title(f"{polutan}")
+
+ax[0].plot(data=xdata, mean["PM2.5"], marker='o')
+ax[0].set_xlabel(None)
+ax[0].set_ylabel("PM2.5")
+ax[0].set_title("Polusi PM2.5")
+
+ax[1].plot(data=xdata, mean["PM10"], marker='o')
+ax[1].set_xlabel(None)
+ax[1].set_ylabel("PM10")
+ax[1].set_title("Polusi PM10")
+
+ax[2].plot(data=xdata, mean["SO2"], marker='o')
+ax[2].set_xlabel(None)
+ax[2].set_ylabel("SO2")
+ax[2].set_title("Polusi SO2")
+
+ax[3].plot(data=xdata, mean["NO2"], marker='o')
+ax[3].set_xlabel(None)
+ax[3].set_ylabel(SO2)
+ax[3].set_title("Polusi SO2")
+
+ax[4].plot(data=xdata, mean["CO"], marker='o')
+ax[4].set_xlabel(None)
+ax[4].set_ylabel("CO")
+ax[4].set_title("Polusi CO")
+
+ax[5].plot(data=xdata, mean["O3"], marker='o')
+ax[5].set_xlabel("Hari", fontsize=20)
+ax[5].set_ylabel("O3")
+ax[5].set_title("Polusi O3")
+
 st.pyplot(fig)
 
 st.subheader("Matriks Korelasi")
@@ -62,13 +85,15 @@ sns.heatmap(filter[["PM2.5", "PM10", "SO2", "NO2", "CO", "O3"]].corr(), annot=Tr
 st.pyplot(plt)
 
 st.subheader("Tren Faktor Cuaca")
-cuaca = st.selectbox("Pilih", ["TEMP", "PRES", "DEWP", "RAIN", "WSPM"])
+cuaca = st.selectbox(
+    label="Pilih", 
+    options=["TEMP", "PRES", "DEWP", "RAIN", "WSPM"])
 
 def plot_cuaca(df, parameter):
     cuaca_mean = df.groupby("year")[parameter].mean().reset_index()
     
     plt.figure(figsize=(12, 6))
-    plt.plot(cuaca_mean["year"], cuaca_mean[parameter], marker='o', linestyle='-')
+    plt.plot(cuaca_mean["year"], cuaca_mean[parameter], marker='o')
     plt.xlabel("Tahun")
     plt.ylabel(f"{parameter} Nilai")
     plt.title(f"{parameter} Tren Cuaca per Tahun")
