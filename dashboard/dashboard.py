@@ -93,10 +93,10 @@ cuaca = st.selectbox(
 cuaca_mean = filter.groupby("year")[cuaca].mean().reset_index()
     
 plt.figure(figsize=(12, 6))
-plt.plot(cuaca_mean["year"], cuaca_mean[parameter], marker='o')
+plt.plot(cuaca_mean["year"], cuaca_mean[cuaca], marker='o')
 plt.xlabel("Tahun")
-plt.ylabel(f"{parameter} Nilai")
-plt.title(f"{parameter} Tren Cuaca per Tahun")
+plt.ylabel(f"{cuaca} Nilai")
+plt.title(f"{cuaca} Tren Cuaca per Tahun")
 st.pyplot(plt)
 
 
