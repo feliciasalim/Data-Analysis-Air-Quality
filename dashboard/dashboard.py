@@ -27,19 +27,15 @@ pilihan = st.selectbox(
 
 if pilihan == "Tahun":
     mean = filter.groupby("year")[["PM2.5", "PM10", "SO2", "NO2", "CO", "O3"]].mean().reset_index()
-    xlabel = "Tahun"
     xdata = mean["year"]
 elif pilihan == "Bulan":
     mean = filter.groupby("month")[["PM2.5", "PM10", "SO2", "NO2", "CO", "O3"]].mean().reset_index()
-    xlabel = "Bulan"
     xdata = mean["month"]
 elif pilihan == "Hari":
     mean = filter.groupby("day")[["PM2.5", "PM10", "SO2", "NO2", "CO", "O3"]].mean().reset_index()
-    xlabel = "Hari"
     xdata = mean["day"]
 else:
     mean = filter.groupby("hour")[["PM2.5", "PM10", "SO2", "NO2", "CO", "O3"]].mean().reset_index()
-    xlabel = "Jam"
     xdata = mean["hour"]
 
 fig, ax = plt.subplots(nrows=2, ncols=3, figsize=(15, 20))
