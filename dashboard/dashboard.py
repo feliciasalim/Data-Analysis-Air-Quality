@@ -47,32 +47,32 @@ ax = ax.flatten()
 colors = ['red', 'blue', 'green', 'purple', 'orange', 'black']
 
 
-ax[0].plot(xdata, mean["PM2.5"], marker='o', linewidth=2, color=colors=[0])
+ax[0].plot(xdata, mean["PM2.5"], marker='o', linewidth=2, color=colors[0])
 ax[0].set_xlabel(None)
 ax[0].set_ylabel("PM2.5")
 ax[0].set_title("Polusi PM2.5")
 
-ax[1].plot(xdata, mean["PM10"], marker='o', linewidth=2, color=colors=[1])
+ax[1].plot(xdata, mean["PM10"], marker='o', linewidth=2, color=colors[1])
 ax[1].set_xlabel(None)
 ax[1].set_ylabel("PM10")
 ax[1].set_title("Polusi PM10")
 
-ax[2].plot(xdata, mean["SO2"], marker='o', linewidth=2, color=colors=[2])
+ax[2].plot(xdata, mean["SO2"], marker='o', linewidth=2, color=colors[2])
 ax[2].set_xlabel(None)
 ax[2].set_ylabel("SO2")
 ax[2].set_title("Polusi SO2")
 
-ax[3].plot(xdata, mean["NO2"], marker='o', linewidth=2, color=colors=[3])
+ax[3].plot(xdata, mean["NO2"], marker='o', linewidth=2, color=colors[3])
 ax[3].set_xlabel(None)
 ax[3].set_ylabel("NO2")
 ax[3].set_title("Polusi NO2")
 
-ax[4].plot(xdata, mean["CO"], marker='o', linewidth=2, color=colors=[4])
+ax[4].plot(xdata, mean["CO"], marker='o', linewidth=2, color=colors[4])
 ax[4].set_xlabel(None)
 ax[4].set_ylabel("CO")
 ax[4].set_title("Polusi CO")
 
-ax[5].plot(xdata, mean["O3"], marker='o', linewidth=2, color=colors=[5])
+ax[5].plot(xdata, mean["O3"], marker='o', linewidth=2, color=colors[5])
 ax[5].set_xlabel("Hari", fontsize=20)
 ax[5].set_ylabel("O3")
 ax[5].set_title("Polusi O3")
