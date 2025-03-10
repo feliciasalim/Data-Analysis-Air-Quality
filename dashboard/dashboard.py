@@ -95,6 +95,6 @@ plt.ylabel(f"{cuaca} Nilai")
 plt.title(f"{cuaca} Tren Cuaca per Tahun")
 st.pyplot(plt)
 
-
+st.caption('Copyright © Felicia Salim 2025')
 
 
